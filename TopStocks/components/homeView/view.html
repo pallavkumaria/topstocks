@@ -1,0 +1,46 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow" id="homeViewScreen" class="screen">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+
+            <span data-bind="text: strings.homeView.title"></span>
+
+        </div>
+    </header>
+
+
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_homeView -->
+    <ul class="masterDetailView list  " data-role="listview" data-auto-bind="false" data-style="inset" data-template="homeViewModelTemplate" data-bind="source: homeViewModel.dataSource, events: {click: homeViewModel.itemClick}" data-pull-to-refresh="true"
+    data-endless-scroll="false">
+    </ul>
+
+
+    <!-- START_CUSTOM_CODE_homeViewModel -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_homeViewModel -->
+    <script type="text/x-kendo-template" id="homeViewModelTemplate">
+        <div class="image-with-text ">
+            # data = app.homeView.homeViewModel.fixHierarchicalData(data); #
+
+            <h4><span class="#: data.icon() #"></span>#: data['StockName'] # <span class="stockSymbol">(#: data['StockSymbol'] #)</span></h4>
+
+        </div>
+        <label id="percentageChangeField" class="km-label-above field field--text-block">
+
+    <!--        <span class="field__label" data-bind="text: strings.homeView.homeViewModel.editableListForm18.percentageChange.title"></span>-->
+
+            <div class="row">
+                <div class="column">
+                    <div class="textBlock field__content">#= data['PercentageChange'] #%</div>
+                </div>
+                <div class="column">
+                    <span class="arrow-up"></span></div>
+                </div>
+            </div>
+
+        </label>
+    </script>
+</div> 

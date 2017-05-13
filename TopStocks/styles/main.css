@@ -743,3 +743,36 @@ Fields
 
 
 /* END_CUSTOM_CODE_kendoUiMobileApp */
+
+
+/** Custom Css here */
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid green;
+}
+
+#percentageChangeField .field__content{
+    font-size:20px;
+    margin-top:15px;
+    margin-left:35px;
+    max-width:100px;
+}
+ 
+.column
+{
+    float:left;
+}
+.row:after
+{
+    clear:both;
+}
+
+.stockSymbol
+{
+    font-size:20px;
+    font-wieght:bolder;
+    color:#FF1493;
+}
