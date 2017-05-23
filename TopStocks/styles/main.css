@@ -746,21 +746,57 @@ Fields
 
 
 /** Custom Css here */
+.topStockIcon
+{
+color: black;
+    font-size: 1.6em!important;
+}
+.topStocksHeader
+{
+    font-weight:bolder;
+}
+.topStockStockSection
+{
+    width:50%;
+    margin-right:15px;
+}
+.topStockStockSymbol
+{
+    float:right!important;
+}
 .arrow-up {
   width: 0; 
   height: 0; 
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 20px solid green;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid green;
+  float:right;
+  margin-top:15px;
 }
 
-#percentageChangeField .field__content{
-    font-size:20px;
-    margin-top:15px;
-    margin-left:35px;
-    max-width:100px;
+#topStockDescription
+{
+        margin-top:0px;
 }
- 
+
+.topStockHeaderMargin
+{
+    margin-bottom:20px!important;
+}
+
+#percentageChangeField{
+    float:right;
+}
+#percentageChangeField .field__content
+{
+    font-weight: bold;
+}
+ #latestValueField .field__content,
+ #percentageChangeField .field__content
+ {
+     min-width:0em;
+         font-size:12px;
+ }
 .column
 {
     float:left;
@@ -772,7 +808,7 @@ Fields
 
 .stockSymbol
 {
-    font-size:20px;
-    font-wieght:bolder;
+    font-size:15px;
+    font-weight:bolder;
     color:#FF1493;
 }

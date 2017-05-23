@@ -74,7 +74,7 @@ app.localization.registerView('homeView');
                         },
                     },
                     icon: function() {
-                        var i = 'globe';
+                        var i = 'featured';
                         return kendo.format('km-icon km-{0}', i);
                     }
                 }
@@ -143,7 +143,7 @@ app.localization.registerView('homeView');
             itemClick: function(e) {
                 var dataItem = e.dataItem || homeViewModel.originalItem;
 
-                app.mobileApp.navigate('#components/homeView/details.html?uid=' + dataItem.uid);
+                //app.mobileApp.navigate('#components/homeView/details.html?uid=' + dataItem.uid);
 
             },
             detailsShow: function(e) {
