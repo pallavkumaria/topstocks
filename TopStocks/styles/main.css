@@ -750,6 +750,8 @@ Fields
 {
 color: black;
     font-size: 1.6em!important;
+    margin-right:2.3rem;
+    
 }
 .topStocksHeader
 {
@@ -758,7 +760,7 @@ color: black;
 .topStockStockSection
 {
     width:50%;
-    margin-right:15px;
+    margin-right:0.25em;
 }
 .topStockStockSymbol
 {
@@ -771,7 +773,7 @@ color: black;
   border-right: 15px solid transparent;
   border-bottom: 15px solid green;
   float:right;
-  margin-top:15px;
+
 }
 
 #topStockDescription
@@ -803,7 +805,9 @@ color: black;
 }
 .row:after
 {
-    clear:both;
+content: '';
+    display: block;
+    clear: both;
 }
 
 .stockSymbol
