@@ -40,7 +40,7 @@ app.localization.registerView('topStockCriteria');
             } else if (paramFilter || searchFilter) {
                 dataSource.filter(paramFilter || searchFilter);
             } else {
-                dataSource.filter({});
+                dataSource.filter({ field: "Owner", operator: "eq", value: app.user.Id });
             }
         },
 

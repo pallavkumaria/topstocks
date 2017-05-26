@@ -67,8 +67,10 @@ app.localization.registerView('homeView');
         criteriaStockDatasource = function (e) {
             var criteriaStockProvider = app.data.backendServices;
             var criteriaStocks = criteriaStockProvider.data('TopStockCriteria');
-            var dataSource;
-            criteriaStocks.get()
+            var filter = {
+                'Owner': app.user.Id
+            };
+            criteriaStocks.get(filter)
                 .then(function (data) {
                     loadUi(e, data);
                 },
