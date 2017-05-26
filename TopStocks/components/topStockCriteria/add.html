@@ -29,7 +29,7 @@
                         <span class="field__label" data-bind="text: strings.topStockCriteria.topStockCriteriaModel.editableListForm21.days.title"></span>
 
 
-                        <input min="1" max="1000" id="days" data-bind="value: addFormData.days, attr: { placeholder: strings.topStockCriteria.topStockCriteriaModel.editableListForm21.days.placeholder }" type="number">
+                        <input pattern="\d*" min="1" max="1000" id="days" data-bind="value: addFormData.days, attr: { placeholder: strings.topStockCriteria.topStockCriteriaModel.editableListForm21.days.placeholder }" type="number">
 
                     </label>
                 </li>

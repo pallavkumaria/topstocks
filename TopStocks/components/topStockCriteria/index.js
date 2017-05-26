@@ -268,10 +268,32 @@ app.localization.registerView('topStockCriteria');
             /// end add model cancel
         },
         onSaveClick: function(e) {
+//check if emptty alert
             var addFormData = this.get('addFormData'),
                 filter = topStockCriteriaModel && topStockCriteriaModel.get('paramFilter'),
                 dataSource = topStockCriteriaModel.get('dataSource'),
                 addModel = {};
+var error =false;
+                if(addFormData.percentageChange == ''){
+                $('#topStockCriteriaModelAddScreen #percentageChangeField').closest('.form-content-item').addClass('fieldError');
+                error=true;
+                }
+                else
+                {
+                $('#topStockCriteriaModelAddScreen #percentageChangeField').closest('.form-content-item').removeClass('fieldError');
+                }
+
+                if(addFormData.days == '' || addFormData.days < 0){
+                $('#topStockCriteriaModelAddScreen #daysField').closest('.form-content-item').addClass('fieldError');
+                                error=true;
+                }
+                else
+                {
+                $('#topStockCriteriaModelAddScreen #daysField').closest('.form-content-item').removeClass('fieldError');
+                }
+                if(error){
+                return;
+                }
 
             if (filter && filter.value && filter.field) {
                 addModel[filter.field] = filter.value;

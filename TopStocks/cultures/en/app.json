@@ -34,11 +34,11 @@
       "editableListForm21": {
         "percentageChange": {
           "title": "Percentage",
-          "placeholder": "Percentage"
+          "placeholder": "e.g. 10 or -7"
         },
         "days": {
           "title": "Days",
-          "placeholder": "Days"
+          "placeholder": "e.g. 3 or 5"
         }
       },
       "editableListForm22": {}
