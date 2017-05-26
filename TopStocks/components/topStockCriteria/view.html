@@ -1,0 +1,32 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.topStockCriteria" data-show="app.topStockCriteria.onShow" data-after-show="app.topStockCriteria.afterShow" id="topStockCriteriaScreen" class="screen">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+
+            <span data-bind="text: strings.topStockCriteria.title"></span>
+
+            <a data-role="button" data-align="right" data-bind="events: { click: topStockCriteriaModel.addClick }">Add</a></div>
+    </header>
+
+
+    <!-- START_CUSTOM_CODE_topStockCriteria -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_topStockCriteria -->
+    <ul class="masterDetailView list  " data-role="listview" data-auto-bind="false" data-style="inset" data-template="topStockCriteriaModelTemplate" data-bind="source: topStockCriteriaModel.dataSource, events: {click: topStockCriteriaModel.itemClick}" data-pull-to-refresh="false"
+    data-endless-scroll="false">
+    </ul>
+
+
+    <!-- START_CUSTOM_CODE_topStockCriteriaModel -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_topStockCriteriaModel -->
+    <script type="text/x-kendo-template" id="topStockCriteriaModelTemplate">
+        <div class="image-with-text ">
+            # data = app.topStockCriteria.topStockCriteriaModel.fixHierarchicalData(data); #
+
+            <a class="topStockCriteriaItem"><span class="#: data.getStockArrowSymbol(data['PercentageChange']) #"></span> #: data['PercentageChange'] #% in last #: data['Days'] # days</a>
+
+        </div>
+    </script>
+</div>

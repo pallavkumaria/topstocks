@@ -7,7 +7,7 @@
     <!-- START_CUSTOM_CODE_homeView -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
     <!-- END_CUSTOM_CODE_homeView -->
-    <h2 class="topStocksHeader">Top stocks gone up by 20% in last 2 days</h2>
+    <h2 class="topStocksHeader">Top stocks gone up by <span data-bind="text: homeViewModel.percentageChange"></span> in last <span data-bind="text: homeViewModel.days"></span> days</h2>
     <ul class="masterDetailView list  " data-role="listview" data-auto-bind="false" data-style="inset" data-template="homeViewModelTemplate" data-bind="source: homeViewModel.dataSource, events: {click: homeViewModel.itemClick}" data-pull-to-refresh="true"
         data-endless-scroll="false"></ul>
     <!-- START_CUSTOM_CODE_homeViewModel -->
@@ -56,7 +56,7 @@
                 </div>
                 <div class="column topStockStockSymbol">
                     <div>
-                        <span class="arrow-up"></span>
+                        <span class="#: data.getStockArrowSymbol(data['PercentageChange']) #"></span>
                     </div>
                 </div>
             </div>

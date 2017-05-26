@@ -5,7 +5,7 @@
     "qrCodeScan": "Scan"
   },
   "home": {
-    "title": "Top stocks",
+    "title": "Login",
     "homeModel": {
       "logoutLabel": "Sign Out",
       "emailLabel": "Email",
@@ -20,8 +20,32 @@
       "gotoSigninLabel": "Sign In"
     }
   },
+  "topStockCriteria": {
+    "title": "Stock Profile",
+    "topStockCriteriaModel": {
+      "detailHeaderFieldValue": "Detail",
+      "addScreenHeaderValue": "Create",
+      "editScreenHeaderValue": "Edit",
+      "editableListForm19": {
+        "criteriaName": {
+          "title": "Heading"
+        }
+      },
+      "editableListForm21": {
+        "percentageChange": {
+          "title": "Percentage",
+          "placeholder": "Percentage"
+        },
+        "days": {
+          "title": "Days",
+          "placeholder": "Days"
+        }
+      },
+      "editableListForm22": {}
+    }
+  },
   "homeView": {
-    "title": "Top stocks",
+    "title": "Top Stocks",
     "homeViewModel": {
       "detailHeaderFieldValue": "Detail",
       "editableListForm18": {

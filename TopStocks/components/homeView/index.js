@@ -1,8 +1,8 @@
 'use strict';
 
 app.homeView = kendo.observable({
-    onShow: function() {},
-    afterShow: function() {}
+    onShow: function () { },
+    afterShow: function () { }
 });
 app.localization.registerView('homeView');
 
@@ -10,12 +10,76 @@ app.localization.registerView('homeView');
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 // END_CUSTOM_CODE_homeView
-(function(parent) {
+(function (parent) {
     var dataProvider = app.data.jsonProvider,
+            days = 5,
+            percentageChange = 3,
+        loadUi = function (e, data) {
+            var uid = e.view.params.uid;
+            if (typeof (uid) == 'undefined') {
+                uid ='';
+            }
+                var res =null;
+                for (var i = 0; i < data.result.length; i++) {
+                    if(res == null)
+                    {
+                        res = data.result[i];
+                    }
+                    if(data.result[i].Id === uid)
+                    {
+                        res = data.result[i];
+                    }
+                }
+                if(res != null)
+                { 
+                days = res.Days;
+                percentageChange = res.PercentageChange;
+                homeViewModel.set('days', res.Days);
+                homeViewModel.set('percentageChange', res.PercentageChange);
+                }
+
+            var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null,
+                isListmenu = false,
+                backbutton = e.view.element && e.view.element.find('header [data-role="navbar"] .backButtonWrapper'),
+                dataSourceOptions = homeViewModel.get('_dataSourceOptions'),
+                dataSource;
+
+            if (param || isListmenu) {
+                backbutton.show();
+                backbutton.css('visibility', 'visible');
+            } else {
+                if (e.view.element.find('header [data-role="navbar"] [data-role="button"]').length) {
+                    backbutton.hide();
+                } else {
+                    backbutton.css('visibility', 'hidden');
+                }
+            }
+
+            // if (!homeViewModel.get('dataSource')) {
+            //     debugger;
+                dataSourceOptions.transport.read.url = dataProvider.url.replace("{days}", days).replace("{percentageChange}", percentageChange);
+                dataSource = new kendo.data.DataSource(dataSourceOptions);
+                homeViewModel.set('dataSource', dataSource);
+            // }
+
+            fetchFilteredData(param);
+        },
+        criteriaStockDatasource = function (e) {
+            var criteriaStockProvider = app.data.backendServices;
+            var criteriaStocks = criteriaStockProvider.data('TopStockCriteria');
+            var dataSource;
+            criteriaStocks.get()
+                .then(function (data) {
+                    loadUi(e, data);
+                },
+                function (error) {
+                    console.log(JSON.stringify(error));
+                });
+        },
         /// start global model properties
 
         /// end global model properties
-        fetchFilteredData = function(paramFilter, searchFilter) {
+        fetchFilteredData = function (paramFilter, searchFilter) {
             var model = parent.get('homeViewModel'),
                 dataSource;
 
@@ -48,11 +112,11 @@ app.localization.registerView('homeView');
             type: 'json',
             transport: {
                 read: {
-                    url: dataProvider.url,
+                    url: dataProvider.url.replace("{days}", days).replace("{percentageChange}", percentageChange),
                     dataType: 'json'
                 }
             },
-            error: function(e) {
+            error: function (e) {
 
                 if (e.xhr) {
                     var errorText = "";
@@ -73,10 +137,13 @@ app.localization.registerView('homeView');
                             defaultValue: ''
                         },
                     },
-                    icon: function() {
+                    icon: function () {
                         var i = 'featured';
                         return kendo.format('km-icon km-{0}', i);
-                    }
+                    },
+                    getStockArrowSymbol: function(data) {
+                    return data > 0 ? "arrow-up" : "arrow-down";
+                    },
                 }
             },
             serverFiltering: false,
@@ -88,8 +155,10 @@ app.localization.registerView('homeView');
         /// start data sources
         /// end data sources
         homeViewModel = kendo.observable({
+            days: 5,
+            percentageChange: 3,
             _dataSourceOptions: dataSourceOptions,
-            fixHierarchicalData: function(data) {
+            fixHierarchicalData: function (data) {
                 var result = {},
                     layout = {};
 
@@ -140,13 +209,13 @@ app.localization.registerView('homeView');
 
                 return result;
             },
-            itemClick: function(e) {
+            itemClick: function (e) {
                 var dataItem = e.dataItem || homeViewModel.originalItem;
 
                 //app.mobileApp.navigate('#components/homeView/details.html?uid=' + dataItem.uid);
 
             },
-            detailsShow: function(e) {
+            detailsShow: function (e) {
                 var uid = e.view.params.uid,
                     dataSource = homeViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(uid);
@@ -156,7 +225,7 @@ app.localization.registerView('homeView');
                 /// start detail form show
                 /// end detail form show
             },
-            setCurrentItemByUid: function(uid) {
+            setCurrentItemByUid: function (uid) {
                 var item = uid,
                     dataSource = homeViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
@@ -174,7 +243,7 @@ app.localization.registerView('homeView');
 
                 return itemModel;
             },
-            linkBind: function(linkString) {
+            linkBind: function (linkString) {
                 var linkChunks = linkString.split('|');
                 if (linkChunks[0].length === 0) {
                     return this.get('currentItem.' + linkChunks[1]);
@@ -188,6 +257,7 @@ app.localization.registerView('homeView');
 
     if (typeof dataProvider.sbProviderReady === 'function') {
         dataProvider.sbProviderReady(function dl_sbProviderReady() {
+
             parent.set('homeViewModel', homeViewModel);
             var param = parent.get('homeViewModel_delayedFetch');
             if (typeof param !== 'undefined') {
@@ -199,30 +269,8 @@ app.localization.registerView('homeView');
         parent.set('homeViewModel', homeViewModel);
     }
 
-    parent.set('onShow', function(e) {
-        var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null,
-            isListmenu = false,
-            backbutton = e.view.element && e.view.element.find('header [data-role="navbar"] .backButtonWrapper'),
-            dataSourceOptions = homeViewModel.get('_dataSourceOptions'),
-            dataSource;
-
-        if (param || isListmenu) {
-            backbutton.show();
-            backbutton.css('visibility', 'visible');
-        } else {
-            if (e.view.element.find('header [data-role="navbar"] [data-role="button"]').length) {
-                backbutton.hide();
-            } else {
-                backbutton.css('visibility', 'hidden');
-            }
-        }
-
-        if (!homeViewModel.get('dataSource')) {
-            dataSource = new kendo.data.DataSource(dataSourceOptions);
-            homeViewModel.set('dataSource', dataSource);
-        }
-
-        fetchFilteredData(param);
+    parent.set('onShow', function (e) {
+        criteriaStockDatasource(e);
     });
 
 })(app.homeView);

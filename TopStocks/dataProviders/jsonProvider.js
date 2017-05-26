@@ -2,7 +2,7 @@
 
 (function() {
     app.data.jsonProvider = {
-        url: 'http://topstocks.azurewebsites.net/api/stocksbypercentage/lse/closeprice/2/22'
+        url: 'http://topstocks.azurewebsites.net/api/stocksbypercentage/lse/closeprice/{days}/{percentageChange}'
     }
 }());
 

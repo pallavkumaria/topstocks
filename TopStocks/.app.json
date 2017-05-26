@@ -27,8 +27,81 @@
           "signinRedirect": "homeView"
         }
       ],
-      "title": "Top stocks",
+      "title": "Login",
       "addToNavigation": false
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "topStockCriteria",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "percentageChange",
+                  "dataBindingRelationChildren": "[]",
+                  "dataBindingMultipleSelectChildren": "[]",
+                  "title": "PercentageChange",
+                  "inputType": "number",
+                  "titlePosition": "left",
+                  "placeholder": "Percentage Change",
+                  "dataBinding": "PercentageChange"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "days",
+                  "dataBindingRelationChildren": "[]",
+                  "dataBindingMultipleSelectChildren": "[]",
+                  "title": "Days",
+                  "inputType": "number",
+                  "titlePosition": "left",
+                  "placeholder": "Days",
+                  "dataBinding": "Days"
+                }
+              ],
+              "name": "editableListForm21",
+              "formType": "add"
+            },
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [],
+              "name": "editableListForm22",
+              "formType": "edit"
+            }
+          ],
+          "name": "topStockCriteriaModel",
+          "dataProvider": "backendServices",
+          "collection": "TopStockCriteria",
+          "headerField": "PercentageChange",
+          "addItemForm": true,
+          "addScreenHeaderValue": "Create",
+          "editItemForm": false,
+          "deleteItemButton": true,
+          "deleteItemConfirmation": true,
+          "listLayout": "list",
+          "hasSeparator": true,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "isMapView": false,
+          "serverSideSorting": true,
+          "serverSideSortingField": "CreatedAt",
+          "serverSideSortingDirection": "asc",
+          "serverSidePaging": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail"
+        }
+      ],
+      "title": "Stock Profile",
+      "addToNavigation": true,
+      "icon": "organize"
     },
     {
       "type": "kendo-ui-mobile:view",
@@ -79,7 +152,7 @@
           "detailHeaderFieldValue": "Detail"
         }
       ],
-      "title": "Top stocks",
+      "title": "Top Stocks",
       "addToNavigation": true,
       "icon": "home"
     }

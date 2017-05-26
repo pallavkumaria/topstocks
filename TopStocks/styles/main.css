@@ -773,7 +773,15 @@ color: black;
   border-right: 15px solid transparent;
   border-bottom: 15px solid green;
   float:right;
+}
 
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid red;
+  float:right;
 }
 
 #topStockDescription
@@ -786,9 +794,6 @@ color: black;
     margin-bottom:20px!important;
 }
 
-#percentageChangeField{
-    float:right;
-}
 #percentageChangeField .field__content
 {
     font-weight: bold;
@@ -815,4 +820,9 @@ content: '';
     font-size:15px;
     font-weight:bolder;
     color:#FF1493;
+}
+.topStockCriteriaItem
+{
+        font-size:18px;
+    font-weight:bolder;
 }

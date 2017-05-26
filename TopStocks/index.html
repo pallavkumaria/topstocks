@@ -21,6 +21,7 @@
 
 <body id="kendoUiMobileApp">
     <script src="components/homeView/index.js"></script>
+    <script src="components/topStockCriteria/index.js"></script>
     <script src="components/home/index.js"></script>
     <div data-role="layout" data-id="main">
         <header data-role="header">
@@ -30,6 +31,8 @@
         </header>
         <footer data-role="footer">
             <div data-role="tabstrip" id="navigation-container">
+
+                <a href="components/topStockCriteria/view.html" data-icon="organize"><span class="navigation-link-text" data-bind="text: strings.topStockCriteria.title"></span></a>
 
                 <a href="components/homeView/view.html" data-icon="home"><span class="navigation-link-text" data-bind="text: strings.homeView.title"></span></a>
                 <a href="components/home/view.html?logout=true" data-position="end" data-icon="action"><span class="navigation-link-text" data-bind="text: strings.home.homeModel.logoutLabel"></span></a></div>
