@@ -17,7 +17,8 @@
       "registerPasswordLabel": "Password",
       "registerNameLabel": "Name",
       "registerLabel": "Register",
-      "gotoSigninLabel": "Sign In"
+      "gotoSigninLabel": "Sign In",
+      "agreeTermsAndConditions" : "By submitting information I confirm that I agree to the TopStocks <a href='#components/home/termsandconditions.html' class='termAndConditions'>Terms and Conditions</a> and <a href='#components/home/privacypolicy.html' class='privacypolicy'>Privacy Policy</a>"
     }
   },
   "topStockCriteria": {

@@ -830,3 +830,11 @@ content: '';
         font-size:18px;
     font-weight:bolder;
 }
+.closeButtonIcon
+{
+     text-align: right;
+}
+.borderLess li
+{
+    border-style:none !important;
+}

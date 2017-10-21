@@ -94,6 +94,7 @@ app.localization.registerView('home');
             displayName: '',
             email: '',
             password: '',
+            agreeTermsAndConditions: false,            
             errorMessage: '',
             validateData: function(data) {
                 var model = homeModel;
@@ -136,7 +137,10 @@ app.localization.registerView('home');
                         Email: email,
                         DisplayName: displayName
                     };
-
+                if(!model.agreeTermsAndConditions)
+                {
+                    return false;
+                }
                 if (!model.validateData(model)) {
                     return false;
                 }

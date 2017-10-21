@@ -274,7 +274,7 @@ app.localization.registerView('topStockCriteria');
                 dataSource = topStockCriteriaModel.get('dataSource'),
                 addModel = {};
 var error =false;
-                if(addFormData.percentageChange == ''){
+                if(isNaN(Number(addFormData.percentageChange)) || addFormData.percentageChange == ''){
                 $('#topStockCriteriaModelAddScreen #percentageChangeField').closest('.form-content-item').addClass('fieldError');
                 error=true;
                 }
@@ -283,7 +283,7 @@ var error =false;
                 $('#topStockCriteriaModelAddScreen #percentageChangeField').closest('.form-content-item').removeClass('fieldError');
                 }
 
-                if(addFormData.days == '' || addFormData.days < 0){
+                if(isNaN(Number(addFormData.days)) || addFormData.days == '' || addFormData.days < 0){
                 $('#topStockCriteriaModelAddScreen #daysField').closest('.form-content-item').addClass('fieldError');
                                 error=true;
                 }
