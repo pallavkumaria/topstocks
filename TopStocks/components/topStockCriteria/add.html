@@ -29,7 +29,23 @@
                         <span class="field__label" data-bind="text: strings.topStockCriteria.topStockCriteriaModel.editableListForm21.days.title"></span>
 
 
-                        <input pattern="\d*" min="1" max="1000" id="days" data-bind="value: addFormData.days, attr: { placeholder: strings.topStockCriteria.topStockCriteriaModel.editableListForm21.days.placeholder }" type="number">
+                                                <input pattern="\d*" min="1" max="1000" id="days" data-bind="value: addFormData.days, attr: { placeholder: strings.topStockCriteria.topStockCriteriaModel.editableListForm21.days.placeholder }" type="number">
+
+                    </label>
+                </li>
+                <li class="form-content-item">
+
+
+                    <label id="marketField" class="field km-listview-label field--text">
+                        <span class="field__label" data-bind="text: strings.topStockCriteria.topStockCriteriaModel.editableListForm21.market.title"></span>
+
+                        
+                        <select class="dropdown" id="market" data-bind="value: addFormData.market">
+                                <option value="BSE">BSE</option>
+                                <option value="LSE" selected>LSE</option>
+                                <option value="NASDAQ">NASDAQ</option>
+                                <option value="NSE">NSE</option>
+                        </select>
 
                     </label>
                 </li>

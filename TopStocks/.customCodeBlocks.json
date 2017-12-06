@@ -13,12 +13,12 @@
         {
             "file": ".html",
             "tag": "topStockCriteriaModel",
-            "block": "<!-- START_CUSTOM_CODE_topStockCriteriaModel -->\n    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->\n\n    <!-- END_CUSTOM_CODE_topStockCriteriaModel -->"
+            "block": "<!-- START_CUSTOM_CODE_topStockCriteriaModel -->\r\n    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->\r\n\r\n    <!-- END_CUSTOM_CODE_topStockCriteriaModel -->"
         },
         {
             "file": ".js",
             "tag": "topStockCriteriaModel",
-            "block": "// START_CUSTOM_CODE_topStockCriteriaModel\n// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes\n\n// END_CUSTOM_CODE_topStockCriteriaModel"
+            "block": "// START_CUSTOM_CODE_topStockCriteriaModel\r\n// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes\r\n\r\n// END_CUSTOM_CODE_topStockCriteriaModel"
         },
         {
             "file": ".html",
@@ -33,7 +33,7 @@
         {
             "file": ".html",
             "tag": "editableListForm21",
-            "block": "<!-- START_CUSTOM_CODE_editableListForm21 -->\n        <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->\n        <!-- END_CUSTOM_CODE_editableListForm21 -->"
+            "block": "<!-- START_CUSTOM_CODE_editableListForm21 -->\r\n        <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->\r\n        <!-- END_CUSTOM_CODE_editableListForm21 -->"
         }
     ]
 }

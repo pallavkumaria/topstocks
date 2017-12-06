@@ -14,6 +14,7 @@ app.localization.registerView('homeView');
     var dataProvider = app.data.jsonProvider,
             days = 5,
             percentageChange = 3,
+            market = 'LSE',
         loadUi = function (e, data) {
             var uid = e.view.params.uid;
             if (typeof (uid) == 'undefined') {
@@ -34,8 +35,10 @@ app.localization.registerView('homeView');
                 { 
                 days = res.Days;
                 percentageChange = res.PercentageChange;
+                market = res.Market;
                 homeViewModel.set('days', res.Days);
                 homeViewModel.set('percentageChange', res.PercentageChange);
+                homeViewModel.set('market', res.Market);
                 }
 
             var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null,
@@ -56,8 +59,10 @@ app.localization.registerView('homeView');
             }
 
             // if (!homeViewModel.get('dataSource')) {
-            //     debugger;
-                dataSourceOptions.transport.read.url = dataProvider.url.replace("{days}", days).replace("{percentageChange}", percentageChange);
+                dataSourceOptions.transport.read.url = dataProvider.url
+                                                    .replace("{days}", days)
+                                                    .replace("{percentageChange}", percentageChange)
+                                                    .replace("{market}", market);
                 dataSource = new kendo.data.DataSource(dataSourceOptions);
                 homeViewModel.set('dataSource', dataSource);
             // }
@@ -146,6 +151,11 @@ app.localization.registerView('homeView');
                     getStockArrowSymbol: function(data) {
                     return data > 0 ? "arrow-up" : "arrow-down";
                     },
+                    getStockCurrencySymbol: function() {
+                        if(market =='LSE') return '£';
+                        if(market =='NASDAQ') return '$';
+                        if(market =='NSE' || market =='BSE') return 'INR ';                        
+                    },
                 }
             },
             serverFiltering: false,
@@ -159,11 +169,11 @@ app.localization.registerView('homeView');
         homeViewModel = kendo.observable({
             days: 5,
             percentageChange: 3,
+            market: 'LSE',
             _dataSourceOptions: dataSourceOptions,
             fixHierarchicalData: function (data) {
                 var result = {},
                     layout = {};
-
                 $.extend(true, result, data);
 
                 (function removeNulls(obj) {

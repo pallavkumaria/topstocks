@@ -838,3 +838,11 @@ content: '';
 {
     border-style:none !important;
 }
+.dropdown{
+    -webkit-appearance: menulist!important;
+}
+.listMarket
+{
+    font-size:12px;
+    color:rgb(255, 20, 147);
+}

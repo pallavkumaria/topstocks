@@ -65,6 +65,18 @@
                   "titlePosition": "left",
                   "placeholder": "Days",
                   "dataBinding": "Days"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "market",
+                  "dataBindingRelationChildren": "[]",
+                  "dataBindingMultipleSelectChildren": "[]",
+                  "title": "Market",
+                  "inputType": "text",
+                  "titlePosition": "left",
+                  "inputTextType": "text",
+                  "placeholder": "Type here ...",
+                  "dataBinding": "Market"
                 }
               ],
               "name": "editableListForm21",

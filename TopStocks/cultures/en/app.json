@@ -18,7 +18,7 @@
       "registerNameLabel": "Name",
       "registerLabel": "Register",
       "gotoSigninLabel": "Sign In",
-      "agreeTermsAndConditions" : "By submitting information I confirm that I agree to the TopStocks <a href='#components/home/termsandconditions.html' class='termAndConditions'>Terms and Conditions</a> and <a href='#components/home/privacypolicy.html' class='privacypolicy'>Privacy Policy</a>"
+      "agreeTermsAndConditions": "By submitting information I confirm that I agree to the TopStocks <a href='#components/home/termsandconditions.html' class='termAndConditions'>Terms and Conditions</a> and <a href='#components/home/privacypolicy.html' class='privacypolicy'>Privacy Policy</a>"
     }
   },
   "topStockCriteria": {
@@ -40,6 +40,10 @@
         "days": {
           "title": "Days",
           "placeholder": "e.g. 3 or 5"
+        },
+        "market": {
+          "title": "Market",
+          "placeholder": "Type here ..."
         }
       },
       "editableListForm22": {}

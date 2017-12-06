@@ -31,7 +31,7 @@ app.localization.registerView('topStockCriteria');
             } else {
                 model.set('paramFilter', undefined);
             }
-;
+
             if (paramFilter && searchFilter) {
                 dataSource.filter({
                     logic: 'and',
@@ -108,10 +108,13 @@ app.localization.registerView('topStockCriteria');
             serverFiltering: true,
 
             serverSorting: true,
-            sort: {
+            sort: [{
+                field: 'Market',
+                dir: 'asc'
+            },{
                 field: 'CreatedAt',
                 dir: 'asc'
-            },
+            }],
 
         },
         /// start data sources
@@ -209,9 +212,9 @@ app.localization.registerView('topStockCriteria');
                 );
             },
             detailsShow: function(e) {
-                 var uid = e.view.params.uid;
-                  var  dataSource = topStockCriteriaModel.get('dataSource'),
-                  itemModel = dataSource.getByUid(uid);
+                var uid = e.view.params.uid;
+                    var  dataSource = topStockCriteriaModel.get('dataSource'),
+                    itemModel = dataSource.getByUid(uid);
 
                 // topStockCriteriaModel.setCurrentItemByUid(uid);
                 app.mobileApp.navigate('#components/homeView/view.html?uid=' + itemModel.Id);
@@ -255,6 +258,7 @@ app.localization.registerView('topStockCriteria');
         /// end add model functions
         onShow: function(e) {
             this.set('addFormData', {
+                market: 'LSE',
                 days: '',
                 percentageChange: '',
                 /// start add form data init
@@ -268,12 +272,12 @@ app.localization.registerView('topStockCriteria');
             /// end add model cancel
         },
         onSaveClick: function(e) {
-//check if emptty alert
+//check if emptty alert            
             var addFormData = this.get('addFormData'),
                 filter = topStockCriteriaModel && topStockCriteriaModel.get('paramFilter'),
                 dataSource = topStockCriteriaModel.get('dataSource'),
                 addModel = {};
-var error =false;
+                var error =false;
                 if(isNaN(Number(addFormData.percentageChange)) || addFormData.percentageChange == ''){
                 $('#topStockCriteriaModelAddScreen #percentageChangeField').closest('.form-content-item').addClass('fieldError');
                 error=true;
@@ -301,6 +305,7 @@ var error =false;
 
             function saveModel(data) {
                 /// start add form data save
+                addModel.Market = addFormData.market;
                 addModel.Days = addFormData.days;
                 addModel.PercentageChange = addFormData.percentageChange;
                 /// end add form data save
